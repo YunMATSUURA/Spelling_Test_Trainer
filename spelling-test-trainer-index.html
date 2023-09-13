@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+  
+  <title>Let's enjoy English!</title>
+  <link rel="icon" href="img/favicon.png">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+</head>
+    <body>
+        <header>
+            <div class="header-div">
+                <div class="header-title">
+                    <h1 class="header-title-letter">Spelling Test Trainer</h1>
+                </div>
+                <div class="header-nav-div">
+                  <nav class="header-nav-nav">
+                    <ul class="header-nav-ul">
+                        <li class="header-nav-li">
+                            <button class="nav-button borderbottom-animation" id="top">Spelling Test Top</button>
+                        </li>
+                        <li class="header-nav-li">
+                            <button class="nav-button borderbottom-animation" id="previous">Previous</button>
+                        </li>
+                    </ul>                
+                  </nav>
+                </div>
+            </div>
+
+        </header>
+
+        <main>
+            <div id="cockie-permission" class="hidden">
+                <p class="cockie-explanation">This site uses cockie. If you accept cockie, your playing record will be recorded in your browser. The information will be used within this web site only.</p>
+                <p class="cockie-explanation">You can enjoy playing without accepting cockie, but the record will not be recorded.</p>
+
+                <div id="cockie-user-selection-div">
+                    <button id="accept-cockie-btn">
+                        <section class="cockie-btn">Accept Cockie</section>
+                    </button>
+    
+                    <button id="refuse-cockie-btn">
+                        <section class="cockie-btn">No, thanks.</section>
+                    </button>
+                </div>
+
+
+            </div>
+            <div class="carousel-display">
+                <div class="ribon" id="carousel-slides-ribon">
+                    <div class="set-word-bank-slide slides">
+
+                        <label for="dataset-dropdown" id="dataset-dropdown-label">Select Spelling Test</label>
+                        <select name="dataset-dropdown" id="dataset-dropdown"></select>
+                        
+                        <input type="button" id="selectDatasetButton">
+                        <label class="input-label" id="go-label" for="selectDatasetButton"><p class="input-label-p">Do this Spelling Test</p></label>
+
+                        <input type="file" id="uploadDatasetButton">
+                        <label class="input-label" id="upLoadCSV" for="uploadDatasetButton"><p class="input-label-p">Upload question Data(csv file)</p></label>
+                    </div>
+                    <div class="select-test-practice-slide slides">
+                        <input type="button" id="doPractice">
+                        <label class="input-label" for="doPractice"><p class="input-label-p">Practice</p></label>
+
+                        <input type="button" id="takeTest">
+                        <label class="input-label" for="takeTest"><p class="input-label-p">Test</p></label>
+                    </div>
+                    <div class="play-slide slides">
+                        <div id="answer-area">
+                            <p id="user-input"></p>
+                        </div>
+                        <div id="button-area">
+                            <input type="button" id="listen">
+                            <label class="input-label" for="listen"><p class="input-label-p">Listen</p></label>
+    
+                            <input type="button" id="next">
+                            <label class="input-label" for="next"><p class="input-label-p" id="nextButtonLabel">Next</p></label>
+                        </div>
+                    </div>
+                    <div class="ending-slide slides">
+                        <div id="result-word-area">
+                            <p id="result-words">Congratulations!</p>
+                            <p id="result-score-exp">score:14/15, exp:3</p>
+                        </div>
+                        <div id="result-table-area">
+                            <table id="result-table">
+                                <tr>
+                                    <th>Your answer</th>
+                                    <th>Correct answer</th>
+                                </tr>
+                                <tr>
+                                    <td class="your-answers"></td>
+                                    <td class="correct-answers"></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="answer-judgement"></div>
+            </div>
+
+
+        </main>
+        
+        <!-- <input type="button" value="こんにちは" onclick="Hello()">
+         -->
+        <script src="js/globalVariables.js"></script>
+        <script src="js/acceptCockie.js"></script>
+        <script src="js/getCookieAndDataset.js"></script>
+        <script src="js/setWordBank.js"></script>
+        <script src="js/displayTestPracticeScreen.js"></script>
+        <script src="js/typing.js"></script>
+        <script src="js/utter.js"></script>
+        <script src="js/nextQuestion.js"></script>
+    </body>
+</html>
