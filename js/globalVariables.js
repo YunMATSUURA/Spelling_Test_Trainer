@@ -7,6 +7,11 @@ let inputWord ="";
 let testOrPractice ="";
 let nthQuestion = 0;
 let playingBoolean = false;
+
+let score = 0; //count up correct answers
+let stp = 0; // calculate spelling text point from result
+let firstUtter = 0;
+
 const slides = document.getElementsByClassName('slides');
 const slideWidth  = slides[0].getBoundingClientRect().width;
 const slideRibon = document.getElementById('carousel-slides-ribon');

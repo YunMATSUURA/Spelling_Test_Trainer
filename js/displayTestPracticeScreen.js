@@ -4,11 +4,11 @@
       // close send screen and display third screen
       const practiceButton = document.getElementById('doPractice');
       const testButton = document.getElementById('takeTest');
-      const nextButtonLabel = document.getElementById('nextButtonLabel');
+      // const nextButtonLabel = document.getElementById('nextButtonLabel');
       
       practiceButton.addEventListener('click', function(){
             testOrPractice = 'practice';
-            nextButtonLabel.innerText = "Answer" 
+            // nextButtonLabel.innerText = "Answer" 
             currentScreenNumber++;
             slideRibon.style.transform = `translateX(${-2 * slideWidth}px )`;
             slideRibon.style.transition = '.5s'
