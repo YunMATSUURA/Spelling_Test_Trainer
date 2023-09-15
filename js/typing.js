@@ -54,14 +54,37 @@
       const userInput = document.getElementById('user-input');
       let answer = userInput.textContent;
       answerWords.push(answer);
-  
+      
+      const answerArea = document.getElementById('answer-area');
+      answerArea.classList.add('attack-animation');
+    
   
       // initialize
-      userInput.textContent = "";
       answer = "";
       inputWord ="";
-  
       nthQuestion++;
+
+      const wait = (sec) =>{
+        return new Promise((resolve,reject)=>{
+          setTimeout(resolve, sec*1000);
+        });
+      }
+
+      async function waitThenInitialize(){
+        try{
+          await wait(1); //wait for shooting meteor
+          userInput.textContent = '';
+          answerArea.classList.remove('attack-animation');
+        } catch(err){
+          console.error(err)
+        }
+      }
+
+      waitThenInitialize();
+
+
+      
+
   
       //display result slide
       if(nthQuestion===wordBank[0].length && wordBank[0].length!=0){
