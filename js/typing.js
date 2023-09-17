@@ -5,7 +5,6 @@
     document.addEventListener('keydown', function(e){
       const userInput = document.getElementById('user-input');
 
-
       if (playingBoolean){
         if(65<=e.keyCode && e.keyCode<=90){
           inputWord += e.key;
@@ -13,9 +12,51 @@
         } else if (e.key==='Backspace' || e.key==='Delete'){
           inputWord='';
           userInput.textContent = inputWord;
+        
+          //Enter
         } else if (e.key==='Enter'){
           e.preventDefault();
           answerQuestion();
+
+          //sound effect
+          const wait = (sec) =>{
+            return new Promise((resolve,reject)=>{
+              setTimeout(resolve, sec*1000);
+            });
+          }
+
+          if(userInput.textContent === wordBank[0][nthQuestion]){
+            //correct answer
+            async function waitThenExplode(){
+              try{
+                await wait(.5); //wait until the missile reached the target
+                const soundEffect = new Audio('mp3/small_explosion1.mp3');
+                soundEffect.currentTime = 0;
+                correctAnswer = 'y';
+                soundEffect.play();
+              } catch(err){
+                console.error(err);
+              }
+            }
+            
+            waitThenExplode();
+            
+          }else{
+            //wrong answer
+            async function waitThenMetalSound(){
+              try{
+                await wait(.5); //wait until the missile reached the target
+                const soundEffect = new Audio('mp3/metal-collision.mp3'); 
+                soundEffect.currentTime = 0;
+                soundEffect.play();
+              } catch(err){
+                console.error(err);
+              } 
+            }
+            waitThenMetalSound();
+          }
+          //Enter
+
         } else if (e.key===' '){
           e.preventDefault();
           utterWords();
@@ -28,15 +69,17 @@
       
       const utter = new SpeechSynthesisUtterance(wordBank[0][nthQuestion]);
       let voices = window.speechSynthesis.getVoices(); //get voice list
-      if (firstUtter===0){
+      if(firstUtter===0){
         utter.voice = voices[0];
-        utter.rate = 1.0;
+        utter.rate = 5; 
         utter.volume = 0;
-        window.speechSynthesis.speak(utter);
+        // window.speechSynthesis.speak(utter);
         firstUtter++;
       }
+
       voices = window.speechSynthesis.getVoices(); //get voice list
       utter.voice = voices[0];
+      utter.volume = 1;
       utter.rate = 1.0;
       // console.log(voices);
       // 'Microsoft David - English (United States)'	'Microsoft David - English (United States)'	'en-US'	true	true
@@ -52,17 +95,13 @@
 
     function answerQuestion(){
       const userInput = document.getElementById('user-input');
+      
       let answer = userInput.textContent;
       answerWords.push(answer);
       
       const answerArea = document.getElementById('answer-area');
       answerArea.classList.add('attack-animation');
-    
-  
-      // initialize
-      answer = "";
-      inputWord ="";
-      nthQuestion++;
+      
 
       const wait = (sec) =>{
         return new Promise((resolve,reject)=>{
@@ -72,18 +111,25 @@
 
       async function waitThenInitialize(){
         try{
-          await wait(1); //wait for shooting meteor
-          userInput.textContent = '';
+          await wait(.5); //wait for shooting meteor
           answerArea.classList.remove('attack-animation');
+          userInput.textContent = '';
+          if(answer===wordBank[0][nthQuestion]){
+            // initialize
+            nthQuestion++;
+          } else{
+            //wrong answer
+            
+          }
+          answer = "";
+          inputWord ="";
+
         } catch(err){
           console.error(err)
         }
       }
 
       waitThenInitialize();
-
-
-      
 
   
       //display result slide

@@ -150,7 +150,6 @@ main{
   
 }
 
-
 .cockie-explanation{
   font-size: 2rem;
   margin-top: 2rem;
@@ -183,15 +182,13 @@ main{
   box-shadow: .05rem .1rem rgb(120, 120,145);
 }
 
-
-
 .cockie-btn{
   font-size: 2rem;
 }
 
 .carousel-display{
-  width: 80rem;
-  height: 40rem;
+  width: 120rem;
+  height: 60rem;
   overflow: hidden;
 }
 
@@ -200,19 +197,18 @@ main{
   flex-direction: row;
 }
 
-
 .set-word-bank-slide{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 3rem;
   min-width: 100%;
-  height: 40rem;
+  height: 50rem;
 }
 
 #dataset-dropdown-label{
   margin: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   font-size: 2rem;
 }
 
@@ -323,19 +319,20 @@ main{
 }
 
 #answer-area{
+  z-index: 1;
   margin: auto;
   display: flex;
   flex-direction: center;
   width: 40rem;
   height: 8.8rem;
-  font-size: 7.2rem;
-  box-shadow: 0px 2px 0px 0px rgb(30, 30, 30);
+  font-size: 10rem;
+  /* box-shadow: 0px 2px 0px 0px rgb(30, 30, 30); */
   outline: none;
 }
 
 #answer-area.attack-animation{
   animation-name: attack-animation;
-  animation-duration: 1s;
+  animation-duration: .5s;
   animation-iteration-count: 1;
   margin: auto;
   display: flex;
@@ -356,7 +353,7 @@ main{
     transform: rotateX(60deg);
   }
   99%{
-    transform: translateY(-10rem);
+    transform: translateY(-14rem);
     transform: rotateX(60deg);
     width: 40rem;
     height: 4.4rem;
@@ -379,17 +376,17 @@ main{
   width: 40rem;
 }
 
+#canvas_outer{
+  position: absolute;
+  width: 100%;
+}
+
 #user-input{margin: auto;
   font-size: inherit;
   text-align: center;
+  color: white;
 }
 
-/* #user-input .attack{margin: auto;
-  font-size: 3.6rem;
-  text-align: center;
-  transform: translateY(-10rem);
-  transition-duration: .4s;
-} */
 
 #result-words{
   margin: auto;
