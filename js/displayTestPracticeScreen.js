@@ -4,8 +4,6 @@
       
       // close send screen and display third screen
       const practiceButton = document.getElementById('doPractice');
-      const testButton = document.getElementById('takeTest');
-
       const viewElm = document.getElementById('canvas_outer');
       const cvs = document.createElement('canvas');
       const widthLength = 1400;
@@ -18,29 +16,26 @@
             slideRibon.style.transform = `translateX(${-2 * slideWidth}px )`;
             slideRibon.style.transition = '.5s'
             playingBoolean = function(){return true;}
+
+ 
             init();
+
+            
       });
 
-      testButton.addEventListener('click', function(){
-            testOrPractice = 'test';
-            nextButtonLabel.innerText = "Next"
-            currentScreenNumber++;
-            slideRibon.style.transform = `translateX(${-2 * slideWidth}px )`;
-            slideRibon.style.transition = '.5s'
-            playingBoolean = function(){return true;}
-      });
+      function init(){    
 
-      function init(){     
             cnt++;
             if(cnt < 1200){
                   window.requestAnimationFrame(init);
             }else{
                   if(cnt<10000){
                         const userInput = document.getElementById('user-input');
+                        gameOver = 'y';
                         userInput.textContent = 'Game Over...';
                   }
             }
-          //
+      //
             if(correctAnswer === 'n'){
                   viewElm.appendChild(cvs);
                   cvs.setAttribute('width', widthLength);
@@ -98,7 +93,6 @@
                   context.rect(10,10,1300,700);
 
                   //meteor
-
                   const explodingMeteor = new Image();
                   explodingMeteor.src = 'img/exploding-meteor-1.jpg';
                   let sx = 550 - cnt/4;
@@ -129,8 +123,7 @@
                         init();
                   });
                   
-                  
-                                    
             }
+            
       }
 }

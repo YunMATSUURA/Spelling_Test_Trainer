@@ -9,7 +9,8 @@ let nthQuestion = 0;
 let playingBoolean = false;
 let correctAnswer = 'n';
 let cnt = 0;
-// let voices;
+let gameOver = 'n';
+let firstTime = 'y';
 
 let score = 0; //count up correct answers
 let stp = 0; // calculate spelling text point from result

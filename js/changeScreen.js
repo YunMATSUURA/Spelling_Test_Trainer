@@ -2,13 +2,13 @@
 
 {
 
+  const userInput = document.getElementById('user-input');
   const top = document.getElementById('top');
 
   top.addEventListener('click', function(){
     slideRibon.style.transform = `translateX(${0 * slideWidth/10}rem )`;
     slideRibon.style.transition = '.5s';
     currentScreenNumber = 0;
-
   })
 
   const previous = document.getElementById('previous');
@@ -17,6 +17,13 @@
     score = 0;
     stp = 0;
     nthQuestion=0;
+    wordBank = [];
+    answerWords =[];
+    inputWord ="";
+    gameOver==='n'
+    userInput.textContent = '';
+    gameOver = 'n';
+    cnt = 0;
 
     switch(currentScreenNumber){
       case 0:

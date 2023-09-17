@@ -14,13 +14,13 @@
         <header>
             <div class="header-div">
                 <div class="header-title">
-                    <h1 class="header-title-letter">Spelling Test Trainer</h1>
+                    <h1 class="header-title-letter">Word Hunt</h1>
                 </div>
                 <div class="header-nav-div">
                   <nav class="header-nav-nav">
                     <ul class="header-nav-ul">
                         <li class="header-nav-li">
-                            <button class="nav-button borderbottom-animation" id="top">Spelling Test Top</button>
+                            <button class="nav-button borderbottom-animation" id="top">Word Hunt Top</button>
                         </li>
                         <li class="header-nav-li">
                             <button class="nav-button borderbottom-animation" id="previous">Previous</button>
@@ -47,7 +47,6 @@
                     </button>
                 </div>
 
-
             </div>
             <div class="carousel-display">
                 <div class="ribon" id="carousel-slides-ribon">
@@ -64,25 +63,17 @@
                     </div>
                     <div class="select-test-practice-slide slides">
                         <input type="button" id="doPractice">
-                        <label class="input-label" for="doPractice"><p class="input-label-p">Practice</p></label>
-
-                        <input type="button" id="takeTest">
-                        <label class="input-label" for="takeTest"><p class="input-label-p">Test</p></label>
+                        <label class="input-label" for="doPractice"><p class="input-label-p">Start!</p></label>
                     </div>
                     <div class="play-slide slides">
                         <div id="canvas_outer"></div>
                         <div id="answer-area">
                             <p id="user-input"></p>
                         </div>
-                        <!-- <div id="button-area">
-                            <input type="button" id="listen">
-                            <label class="input-label" for="listen"><p class="input-label-p">Listen</p></label>
-    
-                            <input type="button" id="next">
-                            <label class="input-label" for="next"><p class="input-label-p" id="nextButtonLabel">Next</p></label>
+                        <!-- <div id="game-rule-div" class="hidden">
+                            <img src="img/game-rule.png" alt="Space Key to reveal words, Enter Key to submit answers">
                         </div> -->
-                        <!-- <p>Space Key => Listen</p> -->
-                        <!-- <p>Enter Key => answer</p> -->
+
                     </div>
                     <div class="ending-slide slides">
                         <div id="result-word-area">
@@ -111,10 +102,8 @@
 
         </main>
         
-        <!-- <input type="button" value="こんにちは" onclick="Hello()">
-         -->
         <script src="js/globalVariables.js"></script>
-        <script src="js/acceptCockie.js"></script>
+        <!-- <script src="js/acceptCockie.js"></script> -->
         <script src="js/getCookieAndDataset.js"></script>
         <script src="js/setWordBank.js"></script>
         <script src="js/displayTestPracticeScreen.js"></script>

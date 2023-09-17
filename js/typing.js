@@ -5,7 +5,19 @@
     document.addEventListener('keydown', function(e){
       const userInput = document.getElementById('user-input');
 
+
+      // if(playingBoolean  && firstTime==='y'){
+      //   console.log(explanation);
+      //   explanation.classList.remove('hidden');
+      //   console.log(explanation);
+        
+      //   let voices = window.speechSynthesis.getVoices(); //get voice list
+      //   utter.voice = voices[0];
+      //   firstTime = 'n';
+      // }
+
       if (playingBoolean){
+  
         if(65<=e.keyCode && e.keyCode<=90){
           inputWord += e.key;
           userInput.textContent = inputWord;
@@ -15,52 +27,73 @@
         
           //Enter
         } else if (e.key==='Enter'){
-          e.preventDefault();
-          answerQuestion();
 
-          //sound effect
-          const wait = (sec) =>{
-            return new Promise((resolve,reject)=>{
-              setTimeout(resolve, sec*1000);
-            });
-          }
+          if(gameOver==='y'){
+            slideRibon.style.transform = `translateX(${0 * slideWidth/10}rem )`;
+            slideRibon.style.transition = '.5s';
+            currentScreenNumber = 0;
 
-          if(userInput.textContent === wordBank[0][nthQuestion]){
-            //correct answer
-            async function waitThenExplode(){
-              try{
-                await wait(.5); //wait until the missile reached the target
-                const soundEffect = new Audio('mp3/small_explosion1.mp3');
-                soundEffect.currentTime = 0;
-                correctAnswer = 'y';
-                soundEffect.play();
-              } catch(err){
-                console.error(err);
-              }
-            }
-            
-            waitThenExplode();
-            
+            wordBank = [];
+            answerWords =[];
+            inputWord ="";
+            userInput.textContent = '';
+            gameOver = 'n';
+            cnt = 0;
+            answerWords.push('----');
+
           }else{
-            //wrong answer
-            async function waitThenMetalSound(){
-              try{
-                await wait(.5); //wait until the missile reached the target
-                const soundEffect = new Audio('mp3/metal-collision.mp3'); 
-                soundEffect.currentTime = 0;
-                soundEffect.play();
-              } catch(err){
-                console.error(err);
-              } 
-            }
-            waitThenMetalSound();
-          }
-          //Enter
 
+            e.preventDefault();
+            answerQuestion();
+
+            //sound effect
+            const wait = (sec) =>{
+              return new Promise((resolve,reject)=>{
+                setTimeout(resolve, sec*1000);
+              });
+            }
+
+            if(userInput.textContent === wordBank[0][nthQuestion]){
+
+              //correct answer
+              async function waitThenExplode(){
+                try{
+                  await wait(.5); //wait until the missile reached the target
+                  const soundEffect = new Audio('mp3/small_explosion1.mp3');
+                  soundEffect.currentTime = 0;
+                  correctAnswer = 'y';
+                  soundEffect.play();
+                } catch(err){
+                  console.error(err);
+                }
+              }
+              waitThenExplode();
+              //correct answer
+              
+            }else{
+              //wrong answer
+              async function waitThenMetalSound(){
+                try{
+                  await wait(.5); //wait until the missile reached the target
+                  const soundEffect = new Audio('mp3/metal-collision.mp3'); 
+                  soundEffect.currentTime = 0;
+                  soundEffect.play();
+                } catch(err){
+                  console.error(err);
+                } 
+              }
+              waitThenMetalSound();
+              //wrong answer
+            }
+        }
+        //Enter
+
+        //Space
         } else if (e.key===' '){
           e.preventDefault();
           utterWords();
         }
+        //Space
       };
     }, false);
 
@@ -97,7 +130,6 @@
       const userInput = document.getElementById('user-input');
       
       let answer = userInput.textContent;
-      answerWords.push(answer);
       
       const answerArea = document.getElementById('answer-area');
       answerArea.classList.add('attack-animation');
@@ -116,10 +148,10 @@
           userInput.textContent = '';
           if(answer===wordBank[0][nthQuestion]){
             // initialize
+            answerWords.push(answer);
             nthQuestion++;
           } else{
-            //wrong answer
-            
+            //wrong answer   
           }
           answer = "";
           inputWord ="";
@@ -131,10 +163,9 @@
 
       waitThenInitialize();
 
-  
       //display result slide
-      if(nthQuestion===wordBank[0].length && wordBank[0].length!=0){
-  
+      if(nthQuestion===wordBank[0].length-1 && wordBank[0].length!=0){
+        
         //create result table
         const tableElement = document.getElementById('result-table');
   
