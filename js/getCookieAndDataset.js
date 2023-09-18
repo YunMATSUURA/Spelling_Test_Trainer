@@ -1,45 +1,45 @@
 'use strict';
 
 {
-  // window.onload = function(){    
+   window.onload = function(){
     
-  //   //Get Dataset list
-  //   let request = new XMLHttpRequest();
-  //   request.open('get', 'dataSetList.csv', true);
-  //   request.send(null);
-  //   request.onload = function(){
-  //     let dataSetList = request.responseText;
-  //     let lines = dataSetList.split('\n');
-      
-  //     const dropDown = document.getElementById('dataset-dropdown');
+     //Get Dataset list
+     let request = new XMLHttpRequest();
+     request.open('get', 'dataSetList.csv', true);
+     request.send(null);
+     request.onload = function(){
+       let dataSetList = request.responseText;
+       let lines = dataSetList.split('\n');
 
-  //     for(let i=0; i<lines.length; i++){
-  //       const optionElement = document.createElement('option');
-  //       optionElement.text = lines[i];
-  //       optionElement.value = lines[i];
-  //       dropDown.appendChild(optionElement);
-  //     }
+       const dropDown = document.getElementById('dataset-dropdown');
+
+      for(let i=0; i<lines.length; i++){
+        const optionElement = document.createElement('option');
+         optionElement.text = lines[i];
+         optionElement.value = lines[i];
+         dropDown.appendChild(optionElement);
+       }
       
-  //     //create options in Drop Down List
-  //     dropDown.selectedIndex = -1;
-  //     const goButton = document.getElementById('go');
-  //   }
+       //create options in Drop Down List
+       dropDown.selectedIndex = -1;
+       const goButton = document.getElementById('go');
+     }
     
-  //   //get coockie
+     //get coockie
   //    let coockieArr = document.cookie.split(';');
 
-  //     coockieArr.forEach(function(value){
-  //       const keyValue = value.split('=');
+     //  coockieArr.forEach(function(value){
+        // const keyValue = value.split('=');
         
-  //       switch(keyValue[0].trim()){
-  //         case 'stpAccAmt':
-  //           stpAccAmt = keyValue[1];
-  //           break;
-  //         case 'stpBalanceAmt':
-  //           stpBalanceAmt = keyValue[1];
-  //           break;
-  //         case 'playCnt':
-  //           playCnt = keyValue[1];
+        // switch(keyValue[0].trim()){
+           //case 'stpAccAmt':
+             //stpAccAmt = keyValue[1];
+             //break;
+           //case 'stpBalanceAmt':
+             //stpBalanceAmt = keyValue[1];
+             //break;
+           //case 'playCnt':
+             //playCnt = keyValue[1];
   //           break;
   //         case 'fullScoreCnt':
   //           fullScoreCnt = keyValue[1];
@@ -94,5 +94,5 @@
   //           break;            
   //       }
   //     }); 
-  // }
+   }
 }
