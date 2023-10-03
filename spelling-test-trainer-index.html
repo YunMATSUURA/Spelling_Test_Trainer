@@ -62,17 +62,22 @@
                         <label class="input-label" id="upLoadCSV" for="uploadDatasetButton"><p class="input-label-p">Upload question Data(csv file)</p></label>
                     </div>
                     <div class="select-test-practice-slide slides">
-                        <input type="button" id="doPractice">
-                        <label class="input-label" for="doPractice"><p class="input-label-p">Start!</p></label>
+
+                        <img alt="Rule Explanation. Press space Key to reveal words. Type Correct words and press Enter key." src="img/game-rule.png" id="rule-explanation1">
+
+
+                        <div id="start-btn">
+                            <input type="button" id="doPractice">
+                            <label class="input-label" for="doPractice" id ="start-label"><p class="input-label-p">Start!</p></label>
+                        </div>
+
+
                     </div>
                     <div class="play-slide slides">
                         <div id="canvas_outer"></div>
                         <div id="answer-area">
                             <p id="user-input"></p>
                         </div>
-                        <!-- <div class="game-rule-div hidden">
-                            <img src="img/game-rule.png" alt="Space Key to reveal words, Enter Key to submit answers">
-                        </div> -->
 
                     </div>
                     <div class="ending-slide slides">
