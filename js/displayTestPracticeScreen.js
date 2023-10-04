@@ -40,8 +40,12 @@
             }else{
                   if(cnt<10000){
                         const userInput = document.getElementById('user-input');
+                        const ansArea = document.getElementById('answer-area');
                         gameOver = 'y';
-                        userInput.textContent = 'Game Over...';
+                        ansArea.style.width = '80rem';
+                        userInput.style.width = '800rem';
+                        userInput.textContent = `Game Over...\n Answer : ${wordBank[0][nthQuestion]}`;
+                        
                   }
             }
       
@@ -223,7 +227,7 @@
           
           //utter voice
           function utterWords(){
-            //★★
+
             const utter = new SpeechSynthesisUtterance(wordBank[0][nthQuestion]);
             let voices = window.speechSynthesis.getVoices(); //get voice list
             if(firstUtter===0){
