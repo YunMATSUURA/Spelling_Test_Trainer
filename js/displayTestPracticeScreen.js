@@ -149,11 +149,14 @@
               if(65<=e.keyCode && e.keyCode<=90){
                 inputWord += e.key;
                 userInput.textContent = inputWord;
-              } else if (e.key==='Backspace' || e.key==='Delete'){
+              } else if (e.key==='Delete'){
                 inputWord='';
                 userInput.textContent = inputWord;
-              
-                //Enter
+              } else if(e.key==='Backspace'){
+                inputWord = inputWord.slice(0,inputWord.length-1)
+                userInput.textContent = inputWord;
+              } else if (e.key==='Shift'){
+                e.preventDefault       
               } else if (e.key==='Enter'){
       
                 if(gameOver==='y'){
