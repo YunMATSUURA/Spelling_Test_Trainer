@@ -3,14 +3,15 @@ let acceptCockie = 'no';
 let currentScreenNumber = 0;
 let wordBank = [];
 let answerWords =[];
-let inputWord ="";
-let testOrPractice ="";
+let inputWord = '';
+let testOrPractice = '';
 let nthQuestion = 0;
 let playingBoolean = false;
 let correctAnswer = 'n';
 let cnt = 0;
 let gameOver = 'n';
 let firstTime = 'y';
+let genre = '';
 
 let score = 0; //count up correct answers
 let stp = 0; // calculate spelling text point from result
