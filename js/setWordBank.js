@@ -54,28 +54,54 @@ travelDatasetButton.addEventListener('click', function(e){
     if(!fileName.includes('csv')){
       return;
     }
-    let request = new XMLHttpRequest();
-    request.open('get', fileName, true);
-    request.send(null);
-    request.onload = function(){
-      const dataSetList = request.responseText;
-      let eachData = dataSetList.split("\n");
+    //let request = new XMLHttpRequest();
+    //request.open('get', fileName, true);
+    //request.send(null);
+    
+    // request.onload = function(){
+    //   const dataSetList = request.responseText;
+    //   let eachData = dataSetList.split("\n");
       
-      for (let i=0; i<eachData.length; i++){
-        tempWordBank[i] = eachData[i].split(',');
+    //   for (let i=0; i<eachData.length; i++){
+    //     tempWordBank[i] = eachData[i].split(',');
+    //   }
+    // }
+    
+    const asyGetData = async() => {
+
+      let request = new XMLHttpRequest();
+      request.open('get', fileName, true);
+      request.send(null);
+
+      request.onload = function(){
+        const dataSetList = request.responseText;
+        let eachData = dataSetList.split("\n");
+        for (let i=0; i<eachData.length - 1; i++){
+          tempWordBank[i] = eachData[i].split(',');
+        }
       }
     }
     
+    const waitRequestOnload = (async() => {
+      await asyGetData();
+      setQuestionData();
+    })();
+
     //set question data set
-    let randnum = 0;
-    console.log(tempWordBank);
-    for(let i=0;i<15;i++){
-      randnum = Math.floor(Math.random()*(tempWordBank[0].length + 1));
-      if(wordBank[0].indexOf(tempWordBank[0][randnum])===-1){
-        wordBank[0].push(tempWordBank[0][randnum]);
-      }else{
-        i-=1;
-      }
+    function setQuestionData(){
+      let randnum = 0;
+
+      for(let i=0;i<15;i++){
+
+       //randnum = Math.floor(Math.random()*(tempWordBank.length + 1));
+        randnum = Math.floor(Math.random()*(260 + 1));
+        console.log(tempWordBank.length);
+        if(wordBank.indexOf(tempWordBank[0][randnum])===-1){
+          wordBank[0].push(tempWordBank[0][randnum]);
+        }else{
+          i-=1;
+        }
+      } 
     }
 
     // close first screen and display second screen
