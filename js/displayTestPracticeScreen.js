@@ -218,12 +218,19 @@
               }
               //Enter
       
-              //Space
-              } else if (e.key===' '){
+              
+              } else if (e.key==='Control'){
+                //Shift
                 e.preventDefault();
                 utterWords();
+
+              } else if (e.key===' '){
+                //Space
+                e.preventDefault();
+                inputWord += ' ';
+                userInput.textContent = inputWord;                
               }
-              //Space
+              
             };
           }, false);
       
