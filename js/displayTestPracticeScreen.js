@@ -44,7 +44,7 @@
                         gameOver = 'y';
                         ansArea.style.width = '80rem';
                         userInput.style.width = '800rem';
-                        userInput.textContent = `Game Over...\n Answer : ${wordBank[0][nthQuestion]}`;
+                        userInput.textContent = `Game Over...\n Answer : ${wordBank[nthQuestion]}`;
                         
                   }
             }
@@ -183,7 +183,7 @@
                     });
                   }
       
-                  if(userInput.textContent === wordBank[0][nthQuestion]){
+                  if(userInput.textContent === wordBank[nthQuestion]){
                     //correct answer
                     async function waitThenExplode(){
                       try{
@@ -231,7 +231,7 @@
           //utter voice
           function utterWords(){
 
-            const utter = new SpeechSynthesisUtterance(wordBank[0][nthQuestion]);
+            const utter = new SpeechSynthesisUtterance(wordBank[nthQuestion]);
             let voices = window.speechSynthesis.getVoices(); //get voice list
             if(firstUtter===0){
               utter.voice = voices[0];
@@ -275,11 +275,11 @@
                 answerArea.classList.remove('attack-animation');
                 userInput.textContent = '';
       
-                if(answer===wordBank[0][nthQuestion]){
+                if(answer===wordBank[nthQuestion]){
                   // initialize
                   answerWords.push(answer);
                   nthQuestion++;
-                  console.log(answerWords);
+                  console.log(wordBank);
                 } else{
                   //wrong answer   
                 }
@@ -296,13 +296,13 @@
       
             //display result slide
             function displayResult(){
-              console.log(nthQuestion);
-              if(nthQuestion===wordBank[0].length && wordBank[0].length!=0){
+
+              if(nthQuestion===wordBank.length && wordBank.length!=0){
               
                 //create result table
                 const tableElement = document.getElementById('result-table');
           
-                for(let i=0; i<wordBank[0].length; i++){
+                for(let i=0; i<wordBank.length; i++){
           
                   const tableRow = document.createElement('tr');
                   const tableDataUser = document.createElement('td');//user's answer
@@ -311,11 +311,11 @@
                   tableDataUser.innerText = answerWords[i];//user's answer
                   tableDataUser.style.textAlign ='center';
           
-                  tableDataCorrect.innerText = wordBank[0][i];//correct answer
+                  tableDataCorrect.innerText = wordBank[i];//correct answer
                   tableDataCorrect.style.textAlign ='center';
           
                   //after finishing all questions
-                  if (answerWords[i]===wordBank[0][i]){
+                  if (answerWords[i]===wordBank[i]){
                     playingBoolean = function(){return false;}
                     tableDataUser.style.color = 'rgb(30, 200,30)';
                     score++;
@@ -333,17 +333,17 @@
                 const resultWord = document.getElementById('result-words');
                 const resultScore = document.getElementById('result-score-exp');
           
-                if (score===wordBank[0].length){
+                if (score===wordBank.length){
                   resultWord.innerText = 'Congratulations! Perfect!!';
                 } else{
                   resultWord.innerText = 'Congratulations!';
                 }
-                resultScore.innerText = `Score:${score}/${wordBank[0].length}, Stp:${stp}`
+                resultScore.innerText = `Score:${score}/${wordBank.length}, Stp:${stp}`
           
                 //display result slide
                 const cDisplay =document.getElementsByClassName('carousel-display');
           
-                cDisplay[0].style.height = `${30 + (wordBank[0].length * (2 + 3.2 * 0.9))}rem`;
+                cDisplay[0].style.height = `${30 + (wordBank.length * (2 + 3.2 * 0.9))}rem`;
           
                 currentScreenNumber++;
                 slideRibon.style.transform = `translateX(${-3 * slideWidth/10}rem )`;
@@ -354,12 +354,12 @@
                 stpBalanceAmt = parseInt(stpBalanceAmt,10) + stp;
                 playCnt++;
                 
-                if(score===wordBank[0].length){
+                if(score===wordBank.length){
                   fullScoreCnt++;
                 }
                 
                 //update cockie
-                if(acceptCockie==='yes' && wordBank[0].length!=0){
+                if(acceptCockie==='yes' && wordBank.length!=0){
                   document.cookie = `stpAccAmt=${stpAccAmt}`;
                   document.cookie = `stpBalanceAmt=${stpBalanceAmt}`;
                   document.cookie = `playCnt=${playCnt}`;
