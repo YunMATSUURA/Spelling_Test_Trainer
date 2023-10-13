@@ -409,6 +409,7 @@ input[type=button]{
   box-shadow: none;
 }
 
+
 @keyframes attack-animation {
   0%{
     transform: rotateX(0deg);

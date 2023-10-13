@@ -35,7 +35,7 @@
 
       function updateAnimation(){
             cnt++;
-            if(cnt < 1200){
+            if(cnt < 1000){
                   window.requestAnimationFrame(updateAnimation);
             }else{
                   if(cnt<10000){
@@ -67,15 +67,22 @@
                   context.fill();
                   context.stroke();
             
-                  //meteor
+                  //meteor & Timer
                   if(cnt<10000){
-                        const meteor = new Image();
-                        meteor.src = 'img/meteor-1.jpg';
-                        let sx = 500 - cnt/4;
-                        let sy = 320 - cnt/4;
-                        let sw = 100 + cnt/2;
-                        let sh = 100 + cnt/2;
-                        context.drawImage(meteor, sx, sy, sw, sh);                        
+                        
+                    const timerNum = Math.ceil((1000 - cnt)/100);
+                    context.font = 'bold 48px serif';
+                    context.fillStyle = 'rgb(230,230,230)';
+                    context.fillText(timerNum, 100,250);
+
+                    const meteor = new Image();
+                    meteor.src = 'img/meteor-1.jpg';
+                    let sx = 500 - cnt/4;
+                    let sy = 320 - cnt/4;
+                    let sw = 100 + cnt/2;
+                    let sh = 100 + cnt/2;
+                    context.drawImage(meteor, sx, sy, sw, sh);
+                        
                   }else{
                         const explodingMeteor = new Image();
                         explodingMeteor.src = 'img/exploding-meteor-1.jpg';
