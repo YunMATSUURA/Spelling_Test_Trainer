@@ -34,65 +34,79 @@
       });
 
       function updateAnimation(){
-            cnt++;
-            if(cnt < 1000){
-                  window.requestAnimationFrame(updateAnimation);
-            }else{
-                  if(cnt<10000){
-                        const userInput = document.getElementById('user-input');
-                        const ansArea = document.getElementById('answer-area');
-                        gameOver = 'y';
-                        ansArea.style.width = '80rem';
-                        userInput.style.width = '800rem';
-                        userInput.textContent = `Game Over...\n Answer : ${wordBank[nthQuestion]}`;
-                        
-                  }
-            }
+        const maxCnt = 1500;
+        cnt++;
+        if(cnt < maxCnt){
+              window.requestAnimationFrame(updateAnimation);
+        }else{
+              if(cnt<10000){
+                    const userInput = document.getElementById('user-input');
+                    const ansArea = document.getElementById('answer-area');
+                    gameOver = 'y';
+                    ansArea.style.width = '80rem';
+                    userInput.style.width = '800rem';
+                    userInput.textContent = `Game Over...\n Answer : ${wordBank[nthQuestion]}`;
+                    
+              }
+        }
       
-            if(correctAnswer === 'n'){
-                  viewElm.appendChild(cvs);
-                  cvs.setAttribute('width', widthLength);
-                  cvs.setAttribute('height', heightLength);      
-                  cvs.style.width = '1400px';
-                  cvs.style.height = '800px';
-                  context.save();
+        if(correctAnswer === 'n'){
+              viewElm.appendChild(cvs);
+              cvs.setAttribute('width', widthLength);
+              cvs.setAttribute('height', heightLength);      
+              cvs.style.width = '1400px';
+              cvs.style.height = '800px';
+              context.save();
                         
-                  context.clearRect(0, 0, widthLength, heightLength);
-                  //background
-                  context.beginPath();
-                  context.fillStyle = 'black';
-                  context.strokeStyle = 'black';
-                  context.lineWidth = 5;
-                  context.rect(10,10,1100,700);
-                  context.fill();
-                  context.stroke();
+              context.clearRect(0, 0, widthLength, heightLength);
+              //background
+              context.beginPath();
+              context.fillStyle = 'black';
+              context.strokeStyle = 'black';
+              context.lineWidth = 5;
+              context.rect(10,10,1100,700);
+              context.fill();
+              context.stroke();
             
-                  //meteor & Timer
-                  if(cnt<10000){
-                        
-                    const timerNum = Math.ceil((1000 - cnt)/100);
+              //meteor & Timer
+              if(cnt<10000){
+                    
+                const timerNum = Math.ceil((maxCnt - cnt)/100);
+
+                switch(true){
+                  case 10 < timerNum:
                     context.font = 'bold 48px serif';
                     context.fillStyle = 'rgb(230,230,230)';
-                    context.fillText(timerNum, 100,250);
+                    break;
+                  case 6 <= timerNum && timerNum <= 10:
+                    context.font = 'bold 48px serif';
+                    context.fillStyle = 'rgb(230,230,0)';
+                    break;
+                  default:
+                    context.font = 'bold 64px serif';
+                    context.fillStyle = 'rgb(230,0,0)';                   
+                }
 
-                    const meteor = new Image();
-                    meteor.src = 'img/meteor-1.jpg';
-                    let sx = 500 - cnt/4;
-                    let sy = 320 - cnt/4;
-                    let sw = 100 + cnt/2;
-                    let sh = 100 + cnt/2;
-                    context.drawImage(meteor, sx, sy, sw, sh);
+                context.fillText(timerNum, 100,250);
+
+                const meteor = new Image();
+                meteor.src = 'img/meteor-1.jpg';
+                let sx = 500 - cnt/(maxCnt/250);
+                let sy = 320 - cnt/(maxCnt/250);
+                let sw = 100 + cnt/(maxCnt/500);
+                let sh = 100 + cnt/(maxCnt/500);
+                context.drawImage(meteor, sx, sy, sw, sh);
                         
-                  }else{
-                        const explodingMeteor = new Image();
-                        explodingMeteor.src = 'img/exploding-meteor-1.jpg';
-                        let sx = 500 - (cnt - 10000)/4;
-                        let sy = 320 - (cnt - 10000)/4;
-                        let sw = 100 + (cnt - 10000)/2;
-                        let sh = 100 + (cnt - 10000)/2;
-                        context.drawImage(explodingMeteor, sx, sy, sw, sh);
-                        correctAnswer = 'n';
-                  }
+              }else{
+                    const explodingMeteor = new Image();
+                    explodingMeteor.src = 'img/exploding-meteor-1.jpg';
+                    let sx = 500 - (cnt - 10000)/4;
+                    let sy = 320 - (cnt - 10000)/4;
+                    let sw = 100 + (cnt - 10000)/2;
+                    let sh = 100 + (cnt - 10000)/2;
+                    context.drawImage(explodingMeteor, sx, sy, sw, sh);
+                    correctAnswer = 'n';
+              }
                   
             }else{
                   cnt+=10000;
